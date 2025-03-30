@@ -12,7 +12,7 @@ mode: dark # default theme "dark" | "light"
 author:
   name: Chunbong # author name
   bio: >- # tell to the world
-    <a href="jms2141@naver.com" target="_blank" rel="noopener">@jms2141@naver.com</a> <a href="https://github.com/ChunBon9" target="_blank" rel="noopener">@github</a>.
+    <a href="mailto:jms2141@naver.com" target="_blank" rel="noopener">jms2141@naver.com</a> <a href="https://github.com/ChunBon9" target="_blank" rel="noopener">@github</a>.
   username: chunbong # general username
   github: ChunBon9 # github username
   twitter: # twitter username
