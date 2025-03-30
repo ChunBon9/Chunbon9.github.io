@@ -11,7 +11,7 @@ My name is Minseo Jung.
 **Experience**
 - Korea University (2022 ~)
 
-**Contect**
+**Contact**
 
 - {{ site.author.email }}
 - github.com/{{ site.author.github }}
