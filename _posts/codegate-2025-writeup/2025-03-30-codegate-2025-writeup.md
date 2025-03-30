@@ -225,8 +225,7 @@ C0DEGATE 1s a gl0ba1 internationa1 hacking d3f3ns3 competition and 5ecurity conf
 ```
 
 <figure>
-<img src="/codegate-2025-writeup/1.png">
-<figcaption>YEAH</figcaption>
+<img src="/codegate-2025-writeup/1.png", alt="1">
 </figure>
 
 성공했습니다. 문제가 분석도 역산도 꽤나 간단했는데 행렬곱을 `np.dot(A,B)`로 해야하는데 `(A*B)`로 진행, 패딩하는 문자인 `C0DEMATR1X`에서  `0`을 `O`로 보고 몇 시간 삽질 했습니다. 눈 좀 뜨고 살아야겠습니다.
