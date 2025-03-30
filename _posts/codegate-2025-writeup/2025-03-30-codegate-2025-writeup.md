@@ -8,7 +8,7 @@ tags: [ctf, writeup, rev]
 
 `init_proc`에 특별한 것이 없었기에 바로 `main`으로 넘어갔습니다.
 
-```C
+```cpp
 for ( i = 0; i <= 11; ++i )
   {
     if ( (i & 1) != 0 )
@@ -46,7 +46,7 @@ for ( i = 0; i <= 11; ++i )
 
 인덱스가 짝수일 때는 우하향 하는 곳에 1을, 반대의 경우 우상향 하는 방향에 1을 채워 넣은 X모양 배열을 만들고 0으로 초기화 되어있는 26X26 배열의 중앙 24X24에 입력을 채워 넣습니다. 그 후 입력의 테두리 부분을 정해진 값으로 패딩합니다. 입력이 없던 칸 역시 패딩합니다.
 
-```C
+```cpp
   subMatrixSum(buf[0], temp[0]);
   swap(temp[0]);                                
   matrixMuti(temp[0], matrixX[0], v21[0]);     
@@ -61,7 +61,7 @@ for ( i = 0; i <= 11; ++i )
 strip되어 있긴 했지만 내부를 보면 그냥 행렬 연산이었습니다. 그러니 이름을 저렇게 붙여줬고 따로 설명은 안 하겠습니다. 특이해보이는 `subMatrixSum`, `swap`만 설명하겠습니다. `swapReverse`는 이름을 지은 그대로 `swap`의 반대 과정입니다.
 
 #### subMatrix
-```C
+```cpp
 __int64 __fastcall subMatrixSum(int *buf, int *v20)
 {
   __int64 result; // rax
@@ -92,7 +92,7 @@ __int64 __fastcall subMatrixSum(int *buf, int *v20)
 
 #### swap
 
-```C
+```cpp
 __int64 __fastcall sub_1769(_DWORD *a1)
 {
   __int64 result; // rax
@@ -120,7 +120,9 @@ __int64 __fastcall sub_1769(_DWORD *a1)
 
 주석을 통해 볼 수 있는 배열의 모서리 부분의 값들을 반시계 방향으로 서로 바꾸고 있습니다. 다음으로는 반시계 방향의 값들을 바꾸고 모두 바꿨다면 안으로 한 줄씩 좁혀가 마저 바꾸고 있습니다. 그럼 `swapReverse`는 시계 방향이겠죠?
 
-```C
+<br>
+
+```cpp
 for ( ii = 0; ii <= 23; ++ii )
     {
     for ( jj = 0; jj <= 23; ++jj )
@@ -235,7 +237,7 @@ C0DEGATE 1s a gl0ba1 internationa1 hacking d3f3ns3 competition and 5ecurity conf
 <summary>cha's ELF pseudo code</summary>
 <div markdown="1">
 
-```C
+```cpp
 __int64 __fastcall main(int a1, char **a2, char **a3)
 {
   memset(src, 0, sizeof(src));
