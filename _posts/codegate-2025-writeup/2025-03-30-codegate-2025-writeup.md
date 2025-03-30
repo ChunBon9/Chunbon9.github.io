@@ -1,6 +1,6 @@
 ---
 title: CODEGATE2025 Write-up
-date: 2025-03-30 19:29:00 
+date: 2025-03-30 19:29:00 +09:00
 tags: [ctf, writeup, rev]
 ---
 
