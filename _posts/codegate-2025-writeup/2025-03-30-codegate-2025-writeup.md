@@ -246,7 +246,7 @@ C0DEGATE 1s a gl0ba1 internationa1 hacking d3f3ns3 competition and 5ecurity conf
 이건 풀지도 분석도 제대로 못 했지만 알아낸 정보만이라도 적어보겠습니다. 
 
 <details>
-<summary>cha's ELF psudocode</summary>
+<summary>cha's ELF pseudo code</summary>
 <div markdown="1">
 
 ```C
