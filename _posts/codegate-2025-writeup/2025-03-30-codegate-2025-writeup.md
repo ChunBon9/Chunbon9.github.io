@@ -6,7 +6,7 @@ tags: [ctf, writeup, rev]
 
 ### C0D3Matr1x
 
-`init_proc`에 특별한 것이 없었기에 바로 `main`으로 넘어갔습니다.
+`init_proc`에 특별한 것이 없었기에 바로 `main`으로 넘어갔습니다.  
 
 ```C
 for ( i = 0; i <= 11; ++i )
@@ -44,10 +44,7 @@ for ( i = 0; i <= 11; ++i )
   }
 ```
 
-인덱스가 짝수일 때는 우하향 하는 곳에 1을, 반대의 경우 우상향 하는 방향에 1을 채워 넣은 X모양 배열을 만들고 0으로 초기화 되어있는 26X26 배열의 중앙 24X24에 입력을 채워 넣습니다. 그 후 입력의 테두리 부분을 정해진 값으로 패딩합니다. 입력이 없던 칸 역시 패딩합니다.
-
-<br>
-
+인덱스가 짝수일 때는 우하향 하는 곳에 1을, 반대의 경우 우상향 하는 방향에 1을 채워 넣은 X모양 배열을 만들고 0으로 초기화 되어있는 26X26 배열의 중앙 24X24에 입력을 채워 넣습니다. 그 후 입력의 테두리 부분을 정해진 값으로 패딩합니다. 입력이 없던 칸 역시 패딩합니다.  
 ```C
   subMatrixSum(buf[0], temp[0]);
   swap(temp[0]);                                
@@ -60,10 +57,8 @@ for ( i = 0; i <= 11; ++i )
   matrixAdd2(v23[0], dword_4420[0], v25);
 ```
 
-strip되어 있긴 했지만 내부를 보면 그냥 행렬 연산이었습니다. 그러니 이름을 저렇게 붙여줬고 따로 설명은 안 하겠습니다. 특이해보이는 `subMatrixSum`, `swap`만 설명하겠습니다. `swapReverse`는 이름을 지은 그대로 `swap`의 반대 과정입니다.
+strip되어 있긴 했지만 내부를 보면 그냥 행렬 연산이었습니다. 그러니 이름을 저렇게 붙여줬고 따로 설명은 안 하겠습니다. 특이해보이는 `subMatrixSum`, `swap`만 설명하겠습니다. `swapReverse`는 이름을 지은 그대로 `swap`의 반대 과정입니다.  
  
- <br>
-
 #### subMatrix
 
 ```C
@@ -93,9 +88,7 @@ __int64 __fastcall subMatrixSum(int *buf, int *v20)
 }
 ```
 
-여기선 26X26 배열을 입력으로 받아서 3X3씩 원소들을 더해서 1칸으로 압축해 24X24 배열로 만들고 있습니다.
-
-<br>
+여기선 26X26 배열을 입력으로 받아서 3X3씩 원소들을 더해서 1칸으로 압축해 24X24 배열로 만들고 있습니다.  
 
 #### swap
 
@@ -142,9 +135,7 @@ for ( ii = 0; ii <= 23; ++ii )
 }
 ```
 
-각종 연산 이후엔 값을 비교합니다. 이후에도 코드가 더 있긴한데 검증이후는 알아서 되겠거니 하여 넘어갔습니다.
-
-<br>
+각종 연산 이후엔 값을 비교합니다. 이후에도 코드가 더 있긴한데 검증이후는 알아서 되겠거니 하여 넘어갔습니다.  
 
 이제 입력값을 찾아야하는데 역산의 경우 `subMatrixSum`과 행렬곱이 문제입니다. 행렬곱의 경우 다른 한 쪽이 역행렬이 있어야 가능합니다. 이를 SageMath를 통해 확인해봤는데 있었습니다. 다음으로 `subMatrixSum`인데 1개를 통해 9개를 찾아낼 수는 없습니다. 하지만 temp[0][0]값을 만들 때 쓰이는 값은 000, 0PP, 0PI 입니다. (P: 패딩값, I: 입력값) 그러니 역산이 가능하고 이후는 연쇄적으로 한 개씩 복구가 가능합니다. 이를 수행하도록 하겠습니다.
 
@@ -233,9 +224,9 @@ f.close()
 C0DEGATE 1s a gl0ba1 internationa1 hacking d3f3ns3 competition and 5ecurity conference. Held annually since 2008, C0D3GAT3 is known as the Olympics for hackers, wh3re hack3rs and security 3xperts from around the world gath3r t0 c0mpet3 for the title of the w0rld's best hack3r. In addition to fierce competition among tru3 white-hat hackers, a juni0r division is also he1d, s3rv1ng as a p1atform f0r discover1ng talented 1ndividuals 1n th3 fi3ld of cyb3rsecurity. You are good hacker.
 ```
 
-<p align="center">
- <img src="/codegate-2025-writeup/1.png">
-</p>
+<figure>
+<img src="/codegate-2025-writeup/img/1.png">
+</figure>
 
 성공했습니다. 문제가 분석도 역산도 꽤나 간단했는데 행렬곱을 `np.dot(A,B)`로 해야하는데 `(A*B)`로 진행, 패딩하는 문자인 `C0DEMATR1X`에서  `0`을 `O`로 보고 몇 시간 삽질 했습니다. 눈 좀 뜨고 살아야겠습니다.
 
@@ -547,8 +538,6 @@ __int64 __fastcall main(int a1, char **a2, char **a3)
 </div>
 </details>
 
-이걸 보고 한 것은 양수, 음수로 되어 있는 것들을 16진수로 바꿔 어디서 어디로 가는 지 실행흐름을 대강 봤고, 입력이 "111"일 때 어디 어디를 거치는지 주석으로 숫자를 매겨봤습니다.
-
-<br>
+이걸 보고 한 것은 양수, 음수로 되어 있는 것들을 16진수로 바꿔 어디서 어디로 가는 지 실행흐름을 대강 봤고, 입력이 "111"일 때 어디 어디를 거치는지 주석으로 숫자를 매겨봤습니다.  
 
 더 진행해야할 것으론 `main`이외의 함수들 내부에서도 어떻게 분기 되는가, hooking을 통해 실행시점에서 결정되는 메모리의 값 알아내서 정확한 분기 알아내기, 이를 바탕으로 input값이 어떻게 계산되는지 알아내고 역산하기를 해야할 것 같습니다.
